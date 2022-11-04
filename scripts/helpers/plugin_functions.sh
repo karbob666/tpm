@@ -1,4 +1,5 @@
-source "../variables.sh"
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$(dirname $CURRENT_DIR)/variables.sh"
 # using @tpm_plugins is now deprecated in favor of using @plugin syntax
 tpm_plugins_variable_name="@tpm_plugins"
 
@@ -27,7 +28,7 @@ _get_user_tmux_conf() {
 	if [ -n "$DEFAULT_TMUX_CONFIG_FILE" ]; then
 		echo "$DEFAULT_TMUX_CONFIG_FILE"
 	# Search for the correct configuration file by priority.
-	else if [ -f "$xdg_location" ]; then
+	elif [ -f "$xdg_location" ]; then
 		echo "$xdg_location"
 
 	else
